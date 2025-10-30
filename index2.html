@@ -1,0 +1,178 @@
+// ...existing code...
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dragon Ball</title>
+    <meta name="description" content="Página web sobre Dragon Ball con información, personajes y más.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root{
+            --accent:#ffb14d;
+            --bg1:#0b2342;
+            --bg2:#07142a;
+            --card-bg: rgba(255,255,255,0.06);
+            --glass: rgba(255,255,255,0.06);
+        }
+        html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:#fff}
+        body{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background: radial-gradient(ellipse at 10% 10%, rgba(255,140,0,0.12), transparent 10%),
+                        linear-gradient(135deg,var(--bg1),var(--bg2));
+            background-attachment: fixed;
+            -webkit-font-smoothing:antialiased;
+            text-rendering:optimizeLegibility;
+        }
+
+        /* Si quieres usar un fondo fijo del proyecto:
+           1) Copia tu imagen a: c:\xampp\htdocs\Dragon ball\assets\fondo_home.jpg
+           2) Descomenta las reglas siguientes (quita /* y */) y ajusta el nombre si hace falta.
+        */
+        /*
+        body {
+            background-image: url('assets/fondo_home.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        */
+
+        .hero{
+            width:min(920px,94%);
+            padding:32px;
+            border-radius:12px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+            backdrop-filter: blur(6px);
+            display:grid;
+            grid-template-columns: 1fr 320px;
+            gap:24px;
+            align-items:center;
+            transition: all 220ms ease;
+            max-width:1100px;
+        }
+        @media(max-width:1024px){
+            .hero{ width:min(880px,94%); padding:28px; grid-template-columns: 1fr 300px; gap:20px; }
+            .panel { padding:16px; }
+        }
+        @media(max-width:760px){
+            /* Cuando la pantalla sea pequeña, apilar y ajustar espaciado */
+            .hero{grid-template-columns:1fr; text-align:center; padding:20px; gap:16px;}
+            .intro{order:1}
+            .panel{order:2}
+            .panel img{display:block;margin:12px auto 0;height:140px;object-fit:cover;}
+        }
+
+        .intro{
+            padding:8px 16px;
+        }
+        h1{
+            margin:0 0 12px;
+            font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+            letter-spacing:1px;
+            color:var(--accent);
+            text-shadow:0 4px 18px rgba(0,0,0,0.6);
+        }
+        p.lead{
+            margin:0 0 18px;
+            color:rgba(255,255,255,0.86);
+            line-height:1.5;
+        }
+        .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+        .btn{
+            display:inline-block;
+            padding:12px 20px;
+            border-radius:10px;
+            background: linear-gradient(180deg,#ffb14d,#ff8a00);
+            color:#1a1a1a;
+            font-weight:700;
+            text-decoration:none;
+            box-shadow: 0 6px 18px rgba(255,138,0,0.18);
+            border: none;
+            cursor:pointer;
+            min-width:140px;
+        }
+        .btn.secondary{
+            background:transparent;
+            border:1px solid rgba(255,255,255,0.08);
+            color:#fff;
+            font-weight:600;
+        }
+        .panel{
+            padding:18px;
+            border-radius:8px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(255,255,255,0.02));
+            text-align:center;
+        }
+        .logo{
+            font-weight:800;
+            font-size:1.1rem;
+            color:var(--accent);
+            margin-bottom:8px;
+        }
+        small{color:rgba(255,255,255,0.6)}
+
+        /* ------------------ Mejoras responsive ------------------ */
+        @media (max-width: 760px) {
+            body { padding: 18px; }
+            .hero { padding:20px; gap:16px; }
+            .actions { flex-direction: column; gap:10px; align-items:stretch; }
+            .btn { width:100%; box-sizing:border-box; min-width:0; }
+            .panel { order: 2; }
+            .intro { order: 1; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        /* Ajuste adicional para pantallas muy pequeñas */
+        @media (max-width: 420px) {
+            .hero { padding:14px; gap:12px; }
+            h1 { font-size:1.4rem; }
+            p.lead { font-size:0.95rem; }
+        }
+    </style>
+</head>
+
+<body>
+        <!--
+            Si quieres usar un fondo fijo desde el servidor (solo navegación):
+            1) Copia tu imagen a: c:\xampp\htdocs\Dragon ball\assets\fondo_home.jpg
+            2) Abre el <head> y descomenta las reglas CSS que comienzan con "body { background-image..."
+        -->
+
+    <main class="hero" role="main" aria-labelledby="title">
+        <section class="intro">
+            <h1 id="title">Bienvenido al mundo de Dragon Ball</h1>
+            <p class="lead">Explora personajes, historias y curiosidades del universo Z. Comienza tu viaje para descubrir las sagas, técnicas y secretos.</p>
+
+            <div class="actions" role="navigation" aria-label="acciones principales">
+                <button id="startBtn" class="btn" type="button" aria-label="Empezar">Empezar</button>
+                <a href="pagina2.html" class="btn secondary" aria-hidden="true" style="text-decoration:none;display:inline-flex;align-items:center;">Ir a página (sin JS)</a>
+            </div>
+        </section>
+
+        <aside class="panel" aria-labelledby="panel-title">
+            <div class="logo">Dragon Ball</div>
+            <h2 id="panel-title" style="margin:0 0 8px;font-size:1rem">Portal principal</h2>
+            <p style="margin:0 0 12px"><small>Haz clic en "Empezar" para continuar a la página principal con más contenido.</small></p>
+
+            <!-- Subida de fondo eliminada: el usuario no puede subir archivos, solo navegar. -->
+            <img src="" alt="" aria-hidden="true" style="width:100%;height:120px;object-fit:cover;border-radius:6px;display:none">
+        </aside>
+    </main>
+
+    <script>
+        // Redirige al hacer clic en el botón.
+        document.getElementById('startBtn').addEventListener('click', function(){
+            window.location.href = 'pagina2.html';
+        });
+
+        // Código de carga de fondo por usuario eliminado (solo navegación).
+    </script>
+</body>
+</html>
+// ...existing code...
